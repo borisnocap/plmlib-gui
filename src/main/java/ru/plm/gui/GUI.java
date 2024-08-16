@@ -7,14 +7,14 @@ import org.bukkit.inventory.Inventory;
 public abstract class GUI {
 
     // Символ отступа для правильного наложения оверлея.
-    public final String OVERLAY_INDENT = "⼆";
+    protected final String OVERLAY_INDENT = "⼆";
 
     // Символ отступа для правильного наложения заголовка на оверлей.
-    public final String TITLE_INDENT = "⼇";
+    protected final String TITLE_INDENT = "⼇";
 
-    private Player owner;
-    private Inventory inventory;
-    private boolean blocked;
+    protected Player owner;
+    protected Inventory inventory;
+    protected boolean blocked;
 
     public Player getOwner() {
         return owner;
@@ -44,7 +44,7 @@ public abstract class GUI {
         blocked = false;
     }
 
-    abstract void onClick(int slot);
+    public abstract void onClick(int slot);
 
     public void show() {
         owner.openInventory(inventory);
