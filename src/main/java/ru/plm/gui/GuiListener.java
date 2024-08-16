@@ -18,15 +18,15 @@ public class GuiListener implements Listener {
     }
 
     public void registerGUI(GUI gui) {
-        guis.put(gui.inventory, gui);
+        guis.put(gui.getInventory(), gui);
     }
 
     public void unregisterGUI(GUI gui) {
-        guis.remove(gui.inventory);
+        guis.remove(gui.getInventory());
     }
 
     @EventHandler
-    public void onInventoryClick(final InventoryClickEvent event) {
+    private void onInventoryClick(final InventoryClickEvent event) {
         Inventory inventory = event.getClickedInventory();
         GUI gui = guis.get(inventory);
         // Все GUI хранятся в HashMap. Если GUI не найден, значит текущий инвентарь не привязан к GUI.

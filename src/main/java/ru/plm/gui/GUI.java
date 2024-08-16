@@ -7,23 +7,29 @@ import org.bukkit.inventory.Inventory;
 public abstract class GUI {
 
     // Символ отступа для правильного наложения оверлея.
-    final String OVERLAY_INDENT = "⼆";
+    public final String OVERLAY_INDENT = "⼆";
 
     // Символ отступа для правильного наложения заголовка на оверлей.
-    final String TITLE_INDENT = "⼇";
+    public final String TITLE_INDENT = "⼇";
 
-    Player owner;
-    Inventory inventory;
+    private Player owner;
+    private Inventory inventory;
     private boolean blocked;
 
-    abstract void onClick(int slot);
-
-    public void show() {
-        owner.openInventory(inventory);
+    public Player getOwner() {
+        return owner;
     }
 
-    public void hide() {
-        owner.closeInventory(InventoryCloseEvent.Reason.PLUGIN);
+    public void setOwner(Player player) {
+        owner = player;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 
     public boolean isBlocked() {
@@ -38,7 +44,13 @@ public abstract class GUI {
         blocked = false;
     }
 
-    public void setOwner(Player player) {
-        owner = player;
+    abstract void onClick(int slot);
+
+    public void show() {
+        owner.openInventory(inventory);
+    }
+
+    public void hide() {
+        owner.closeInventory(InventoryCloseEvent.Reason.PLUGIN);
     }
 }
