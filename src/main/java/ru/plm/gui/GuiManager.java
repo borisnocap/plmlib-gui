@@ -43,11 +43,10 @@ public class GuiManager implements Listener {
      */
     @EventHandler
     private void onInventoryClick(final @NotNull InventoryClickEvent event) {
-        if (event.getAction() != InventoryAction.PICKUP_ALL) return;
-        Inventory inventory = event.getClickedInventory();
-        GUI gui = guis.get(inventory);
+        GUI gui = guis.get(event.getClickedInventory());
         if (gui == null) return;
         event.setCancelled(true);
+        if (event.getAction() != InventoryAction.PICKUP_ALL) return;
         gui.block();
         gui.onClick(event.getSlot());
     }
