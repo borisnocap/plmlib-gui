@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 
+@SuppressWarnings("unused")
 public abstract class GUI {
 
     // Символ отступа для правильного наложения оверлея.
