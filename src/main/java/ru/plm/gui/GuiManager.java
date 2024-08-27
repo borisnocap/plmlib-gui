@@ -36,8 +36,8 @@ public class GuiManager implements Listener {
 
     /**
      * Менеджер отслеживает взаимодействия с GUI с помощью InventoryClickEvent.
-     * Отслеживаются только обычные клики по слотам (InventoryAction.PICKUP_ALL), иначе могут возникать двойные
-     * срабатывания нажатий.
+     * Отслеживаются только обычные клики ЛКМ (InventoryAction.PICKUP_ALL) и ПКМ (PICKUP_HALF), иначе
+     * могут возникать двойные срабатывания нажатий.
      * Если инвентарь, в котором кликнул игрок, отслеживается менеджером и имеет привязанный GUI, тогда
      * нажатие будет отменено, и кликнутый слот будет передан в соответствующий GUI.
      */
@@ -46,8 +46,9 @@ public class GuiManager implements Listener {
         GUI gui = guis.get(event.getClickedInventory());
         if (gui == null) return;
         event.setCancelled(true);
-        if (event.getAction() != InventoryAction.PICKUP_ALL) return;
-        gui.block();
-        gui.onClick(event.getSlot());
+        switch (event.getAction()) {
+            case InventoryAction.PICKUP_ALL -> gui.onLeftClick(event.getSlot());
+            case InventoryAction.PICKUP_HALF -> gui.onRightClick(event.getSlot());
+        }
     }
 }

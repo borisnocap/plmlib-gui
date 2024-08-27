@@ -66,7 +66,6 @@ public abstract class GUI {
         blocked = false;
     }
 
-    public abstract void onClick(int slot);
 
     public void show() {
         owner.openInventory(inventory);
@@ -75,4 +74,8 @@ public abstract class GUI {
     public void hide() {
         owner.closeInventory(InventoryCloseEvent.Reason.PLUGIN);
     }
+
+    public abstract void onRightClick(int slot);
+
+    public abstract void onLeftClick(int slot);
 }
