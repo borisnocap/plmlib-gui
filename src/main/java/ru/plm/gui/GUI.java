@@ -29,10 +29,13 @@ public abstract class GUI {
     public static final Style WHITE_NON_ITALIC = Style.style().color(WHITE).decoration(TextDecoration.ITALIC, false).build();
 
     // Символ отступа для правильного наложения оверлея.
-    protected final String OVERLAY_INDENT = "⼆";
+    protected final String OVERLAY_INDENT = "\uE010";
 
     // Символ отступа для правильного наложения заголовка на оверлей.
-    protected final String TITLE_INDENT = "⼇";
+    protected final String TITLE_INDENT = "\uE171";
+
+    // Оверлей инвентаря с закрашенной 6 строкой.
+    protected final String OVERLAY_WITH_5_LINES = "\uEF05";
 
     protected Player owner;
     protected Inventory inventory;
@@ -65,7 +68,6 @@ public abstract class GUI {
     public void unblock() {
         blocked = false;
     }
-
 
     public void show() {
         owner.openInventory(inventory);
