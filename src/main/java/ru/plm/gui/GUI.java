@@ -29,10 +29,10 @@ public abstract class GUI {
     public static final Style WHITE_NON_ITALIC = Style.style().color(WHITE).decoration(TextDecoration.ITALIC, false).build();
 
     // Символ отступа для правильного наложения оверлея.
-    protected final String OVERLAY_INDENT = "\uE010";
+    protected final String OVERLAY_INDENT = "\uE008";
 
     // Символ отступа для правильного наложения заголовка на оверлей.
-    protected final String TITLE_INDENT = "\uE171";
+    protected final String TITLE_INDENT = "\uE169";
 
     // Оверлей инвентаря с закрашенной 6 строкой.
     protected final String OVERLAY_WITH_5_LINES = "\uEF05";
